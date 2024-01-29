@@ -5,6 +5,9 @@ class FirstContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double mqh = MediaQuery.of(context).size.height;
+    double mqw = MediaQuery.of(context).size.width;
+
     return Container(
         child: Stack(
       children: [
@@ -17,59 +20,59 @@ class FirstContainer extends StatelessWidget {
               "assets/Background.png",
             )),
         Positioned(
-          right: 25,
-          top: 200,
+          right: mqw * 0.12,
+          top: mqh * 0.24,
           child: Image.asset(
             "assets/cloudAndSun.png",
-            height: 100,
+            height: mqh * 0.12,
           ),
         ),
-        const Positioned(
-            left: 50,
-            top: 40,
+        Positioned(
+            left: mqw * 0.12,
+            top: mqh * 0.04,
             child: Text(
               "Kharkiv, Ukraine",
               style: TextStyle(fontSize: 20, color: Colors.white),
             )),
         Positioned(
-            right: 10,
-            top: 30,
+            right: mqw * 0.10,
+            top: mqh * 0.03,
             child: IconButton(
                 onPressed: () {},
                 icon: const Icon(
                   Icons.search,
                   color: Colors.white,
                 ))),
-        const Positioned(
-            left: 50,
-            bottom: 150,
+        Positioned(
+            left: mqw * 0.12,
+            bottom: mqh * 0.16,
             child: Text(
               "3°",
               style: TextStyle(
-                  fontSize: 40,
+                  fontSize: mqh * 0.1,
                   fontWeight: FontWeight.bold,
                   color: Colors.white),
             )),
-        const Positioned(
-            left: 50,
-            bottom: 10,
+        Positioned(
+            left: mqw * 0.12,
+            bottom: mqh * 0.02,
             child: Text(
               "January 18, 16:14",
-              style: TextStyle(fontSize: 20, color: Colors.white),
+              style: TextStyle(fontSize: mqw * 0.06, color: Colors.white),
             )),
-        const Positioned(
-            right: 20,
-            bottom: 30,
+        Positioned(
+            right: mqw * 0.04,
+            bottom: mqh * 0.038,
             child: Text(
               "Day 3°",
-              style: TextStyle(fontSize: 20, color: Colors.white),
+              style: TextStyle(fontSize: mqw * 0.06, color: Colors.white),
             )),
-        const Positioned(
-            right: 20,
-            bottom: 10,
+        Positioned(
+            right: mqw * 0.04,
+            bottom: mqh * 0.01,
             child: Text(
               "Night -1°",
-              style: TextStyle(fontSize: 20, color: Colors.white),
+              style: TextStyle(fontSize: mqw * 0.06, color: Colors.white),
             ))
       ],
     ));

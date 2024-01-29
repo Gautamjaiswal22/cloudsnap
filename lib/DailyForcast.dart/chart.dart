@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Weather Forecast Chart'),
+          title: const Text('Weather Forecast Chart'),
         ),
         body: WeatherChart(),
       ),
@@ -47,14 +47,17 @@ class WeatherChart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double mqh = MediaQuery.of(context).size.height;
+    double mqw = MediaQuery.of(context).size.width;
+
     return Padding(
-      padding: EdgeInsets.all(16.0),
+      padding: EdgeInsets.all(mqw * 0.016),
       child: Container(
-        height: 200,
+        height: mqh * 0.22,
         child: LineChart(
           LineChartData(
             titlesData: FlTitlesData(
-                topTitles: AxisTitles(
+                topTitles: const AxisTitles(
                     sideTitles:
                         SideTitles(showTitles: false, reservedSize: 30)),
                 //  rightTitles: AxisTitles(
@@ -79,9 +82,9 @@ class WeatherChart extends StatelessWidget {
                 )),
             borderData: FlBorderData(
               show: false,
-              border: Border.all(color: Color(0xff37434d), width: 1),
+              border: Border.all(color: const Color(0xff37434d), width: 1),
             ),
-            gridData: FlGridData(
+            gridData: const FlGridData(
               show: true,
               drawHorizontalLine: true,
               drawVerticalLine: false,

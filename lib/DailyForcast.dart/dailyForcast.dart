@@ -8,32 +8,39 @@ class DailyForcast extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double mqh = MediaQuery.of(context).size.height;
+    double mqw = MediaQuery.of(context).size.width;
+
     return Container(
-      height: 300,
+      height: mqh * 0.36,
       width: double.infinity,
       decoration: BoxDecoration(
           color: themeColor5, borderRadius: BorderRadius.circular(20)),
       child: Column(
         children: [
           Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: EdgeInsets.all(mqw * 0.02),
             child: Row(
               children: [
                 CircleAvatar(
                   backgroundColor: Colors.white,
                   child: SvgPicture.asset("assets/icon/history_toggle_off.svg"),
                 ),
-                const SizedBox(
-                  width: 10,
+                SizedBox(
+                  width: mqw * 0.02,
                 ),
-                const Text(
+                Text(
                   "Daily Forcast",
-                  style: TextStyle(fontWeight: FontWeight.bold),
+                  style: TextStyle(
+                      fontSize: mqw * 0.048, fontWeight: FontWeight.bold),
                 ),
               ],
             ),
           ),
-          WeatherChart()
+          Padding(
+            padding: EdgeInsets.all(mqh * 0.01),
+            child: WeatherChart(),
+          )
         ],
       ),
     );

@@ -1,3 +1,4 @@
+import 'package:cloudsnap/Card/forcastCard.dart';
 import 'package:cloudsnap/Constant/constant.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -7,25 +8,32 @@ class HourlyForcast extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double mqh = MediaQuery.of(context).size.height;
+    double mqw = MediaQuery.of(context).size.width;
+
     return Container(
-      height: 200,
+      height: mqh * 0.22,
       width: double.infinity,
       decoration: BoxDecoration(
           color: themeColor5, borderRadius: BorderRadius.circular(20)),
       child: Column(
         children: [
           Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: EdgeInsets.all(mqw * 0.02),
             child: Row(
               children: [
                 CircleAvatar(
                   backgroundColor: Colors.white,
                   child: SvgPicture.asset("assets/icon/history_toggle_off.svg"),
                 ),
-                const SizedBox(
-                  width: 10,
+                SizedBox(
+                  width: mqw * 0.02,
                 ),
-                const Text("Hourly Forcast"),
+                Text(
+                  "Hourly Forcast",
+                  style: TextStyle(
+                      fontSize: mqw * 0.048, fontWeight: FontWeight.bold),
+                ),
               ],
             ),
           ),
@@ -70,32 +78,6 @@ class HourlyForcast extends StatelessWidget {
             ),
           )
         ],
-      ),
-    );
-  }
-}
-
-class ForcastCard extends StatelessWidget {
-  final String title;
-  final String icon;
-  final String value;
-  const ForcastCard(
-      {super.key,
-      required this.title,
-      required this.icon,
-      required this.value});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: 80,
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
-          Text(title),
-          Image.asset(icon),
-          Text(value),
-        ]),
       ),
     );
   }

@@ -2,44 +2,46 @@ import 'package:cloudsnap/Card/featureCard.dart';
 import 'package:cloudsnap/Card/sunRiseCard.dart';
 import 'package:cloudsnap/DailyForcast.dart/dailyForcast.dart';
 import 'package:cloudsnap/Constant/constant.dart';
-import 'package:cloudsnap/hourlyForcast.dart/hourlyForcast.dart';
+import 'package:cloudsnap/HourlyForcast/hourlyForcast.dart';
+import 'package:cloudsnap/ScreenParts/third.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class SecondContainer extends StatelessWidget {
   const SecondContainer({super.key});
 
   @override
   Widget build(BuildContext context) {
+    double mqh = MediaQuery.of(context).size.height;
+    double mqw = MediaQuery.of(context).size.width;
     return Container(
         color: themeColor,
         child: Column(
           children: [
-            const SizedBox(
-              height: 20,
+            SizedBox(
+              height: mqh * 0.020,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Container(
-                  height: 50,
-                  width: 100,
+                  height: mqh * 0.056,
+                  width: mqw * 0.22,
                   decoration: BoxDecoration(
                       color: themeColor10,
                       borderRadius: BorderRadius.circular(15)),
                   child: const Center(child: Text("Today")),
                 ),
                 Container(
-                  height: 50,
-                  width: 100,
+                  height: mqh * 0.056,
+                  width: mqw * 0.22,
                   decoration: BoxDecoration(
                       color: themeColor10,
                       borderRadius: BorderRadius.circular(15)),
                   child: const Center(child: Text("Tomorrow")),
                 ),
                 Container(
-                  height: 50,
-                  width: 100,
+                  height: mqh * 0.056,
+                  width: mqw * 0.22,
                   decoration: BoxDecoration(
                       color: themeColor10,
                       borderRadius: BorderRadius.circular(15)),
@@ -47,9 +49,10 @@ class SecondContainer extends StatelessWidget {
                 )
               ],
             ),
-            const Padding(
-              padding: EdgeInsets.all(8.0),
-              child: Row(
+            Padding(
+              padding: EdgeInsets.only(
+                  left: mqw * 0.02, top: mqh * 0.02, right: mqw * 0.02),
+              child: const Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   FeaturesCard(
@@ -69,9 +72,10 @@ class SecondContainer extends StatelessWidget {
                 ],
               ),
             ),
-            const Padding(
-              padding: EdgeInsets.all(8.0),
-              child: Row(
+            Padding(
+              padding: EdgeInsets.only(
+                  left: mqw * 0.02, top: mqh * 0.02, right: mqw * 0.02),
+              child: const Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   FeaturesCard(
@@ -91,20 +95,23 @@ class SecondContainer extends StatelessWidget {
                 ],
               ),
             ),
-            const SizedBox(
-              height: 10,
+            // SizedBox(
+            //   height: mqh * 0.01,
+            // ),
+            Padding(
+              padding: EdgeInsets.only(
+                  left: mqw * 0.02, top: mqh * 0.02, right: mqw * 0.02),
+              child: const HourlyForcast(),
             ),
-            const Padding(
-              padding: EdgeInsets.all(8.0),
-              child: HourlyForcast(),
+            Padding(
+              padding: EdgeInsets.only(
+                  left: mqw * 0.02, top: mqh * 0.02, right: mqw * 0.02),
+              child: const DailyForcast(),
             ),
-            const Padding(
-              padding: EdgeInsets.all(8.0),
-              child: DailyForcast(),
-            ),
-            const Padding(
-              padding: EdgeInsets.all(8.0),
-              child: Row(
+            Padding(
+              padding: EdgeInsets.only(
+                  left: mqw * 0.02, top: mqh * 0.02, right: mqw * 0.02),
+              child: const Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   SunRiseCard(
@@ -119,10 +126,8 @@ class SecondContainer extends StatelessWidget {
                       changeValue: "in 9 hr")
                 ],
               ),
-            )
+            ),
           ],
         ));
   }
 }
-
-

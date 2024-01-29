@@ -18,9 +18,12 @@ class SunRiseCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double mqh = MediaQuery.of(context).size.height;
+    double mqw = MediaQuery.of(context).size.width;
+
     return Container(
-      height: 80,
-      width: 190,
+      height: mqh * 0.098,
+      width: mqw * 0.46,
       decoration: BoxDecoration(
           color: themeColor5, borderRadius: BorderRadius.circular(20)),
       child: Row(
@@ -36,38 +39,36 @@ class SunRiseCard extends StatelessWidget {
           const SizedBox(
             width: 10,
           ),
-          Container(
-            width: 70,
+          Expanded(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
                   title,
-                  style: const TextStyle(fontWeight: FontWeight.w500),
+                  style: TextStyle(
+                      fontWeight: FontWeight.w500, fontSize: mqh * 0.018),
                 ),
-                const SizedBox(
-                  height: 5,
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      value,
+                      style: TextStyle(fontSize: mqw * 0.036),
+                    ),
+                    Padding(
+                      padding:
+                          EdgeInsets.only(top: mqh * 0.02, right: mqw * 0.04),
+                      child: Text(
+                        changeValue,
+                        style: TextStyle(fontSize: mqw * 0.032),
+                      ),
+                    ),
+                  ],
                 ),
-                Text(value),
               ],
             ),
           ),
-          Align(
-            alignment: Alignment.bottomRight,
-            child: Padding(
-              padding: const EdgeInsets.all(6.0),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: [
-                  Text(
-                    changeValue,
-                    style: const TextStyle(fontSize: 12),
-                  ),
-                ],
-              ),
-            ),
-          )
         ],
       ),
     );
